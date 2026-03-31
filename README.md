@@ -46,4 +46,11 @@ package.json
 
 ---
 
-*This is a fictional example project. All API keys and credentials in `.env.example` are placeholders.*
+## ⚠️ Example data only
+
+This is a fictional example project. All names, addresses, company data, and credentials are fabricated.
+No real personal data is contained in this repository.
+
+The HTML pages in `src/app/` display a visible disclaimer banner to make this clear to any visitor.
+
+*Not legal advice. Not a real company. For demonstration purposes only.*
