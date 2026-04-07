@@ -74,5 +74,20 @@ app.post('/api/email/welcome', async (req, res) => {
   res.json({ sent: true })
 })
 
+// HR screening endpoint (fictional demo — Rand Industries)
+import { processApplication, EXAMPLE_CANDIDATES } from './hiring'
+
+app.post('/api/hiring/evaluate', async (req, res) => {
+  const { candidateId } = req.body
+  const candidate = EXAMPLE_CANDIDATES.find(c => c.id === candidateId)
+  if (!candidate) return res.status(404).json({ error: 'Candidate not found' })
+  const decision = await processApplication(candidate)
+  res.json(decision)
+})
+
+app.get('/api/hiring/candidates', (_req, res) => {
+  res.json({ candidates: EXAMPLE_CANDIDATES.map(c => ({ id: c.id, name: c.name, role: c.appliedRole })) })
+})
+
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
